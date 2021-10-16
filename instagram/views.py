@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import  Post
+from .models import  Post,Likes,Comment
 from django.utils import timezone
-from .forms import ProfileUpdateForm
+from .forms import ProfileUpdateForm,CommentForm
 
 
 # Create your views here.
@@ -30,3 +30,36 @@ def profile(request):
 
 
     return render(request, 'insta/profile.html', {'p_form':p_form,"posts" : posts,'user' : user})    
+
+def like(request,post_id):
+    user = request.user
+    post = Post.objects.get(id = post_id)
+    current_likes = post.likes
+    liked = Likes.objects.filter(user = user,post = post).count()
+    if not liked:
+        Likes.objects.create(user = user,post = post)
+        current_likes = current_likes + 1
+    else:
+        Likes.objects.filter(user = user,post = post).delete()  
+        current_likes = current_likes - 1
+
+    post.likes = current_likes
+    post.save()
+
+    return redirect('post')    
+
+def new_comment(request,pk):
+    post = Post.objects.get(pk = pk)
+
+    if request.method == 'POST':
+
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit = False)
+            obj.post = post
+            obj.save()
+        return redirect('post')
+    else:
+        form = CommentForm()
+
+    return render(request, 'insta/comment.html', {'post':post,"form": form})        

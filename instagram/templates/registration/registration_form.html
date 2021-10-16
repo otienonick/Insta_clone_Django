@@ -14,28 +14,45 @@
 
       <div class="card">
 
-        <div class="card-header">
-          <h3 class="text-center">Sign Up</h3>
+        <div class="text-center mt-2">
+            <a href=""><img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""> </a>
         </div>
 
         <div class="card-body">
 
           <form  action="/accounts/register/" method="post">
             {% csrf_token %}
-            {% bootstrap_form form %}
-            <div class="form-group">
+
+            {% bootstrap_form  form  %}
+            
+            <div class="form-group d-grid gap-2">
               <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
-          <h5>Already have an account?<a href="/accounts/login">Sign in</a></h5>
-
+        </div>
+      </div>
+      
+      <div class="card mt-5 text-center">
+        <div class="card-body">
+          <h6>Already have an account?<a href="/accounts/login"> Login </a></h6>
 
         </div>
+    
+    </div>
+    <div class="apps">
+        <p>Get the app</p>
+        <div class="d_images d-flex">
 
-      </div>
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="">
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="">
+    </div>
+
+
+    </div>
+
 
     </div>
     <!-- empty div -->

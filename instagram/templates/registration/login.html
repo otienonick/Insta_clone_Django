@@ -12,8 +12,8 @@
       {% endif %}
       <div class="card">
 
-        <div class="card-header">
-          <h3 class="text-center">Sign In</h3>
+        <div class="text-center mt-2">
+            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="">
         </div>
         <div class="card-body">
 
@@ -21,19 +21,38 @@
             {% csrf_token %}
             {% bootstrap_form form%}
 
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            <div class="form-group d-grid gap-2">
+              <input type="submit" class="btn btn-primary btn-sm " value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
-          <h5>Dont have an account?<a href="/accounts/register">Sign Up</a></h5>
 
 
         </div>
 
       </div>
+      <div class="card mt-5 text-center">
+          <div class="card-body">
+            <h6>Dont have an account? <a href="/accounts/register"> Sign Up</a></h6>
+
+          </div>
+
+         
+      </div>
+
+      <div class="apps">
+        <p>Get the app</p>
+        <div class="d_images d-flex">
+
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="">
+        <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="">
+    </div>
+
+
+    </div>
+
 
     </div>
     <!-- empty div -->

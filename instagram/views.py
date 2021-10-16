@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import  Post,Likes
 from django.utils import timezone
-from .forms import ProfileUpdateForm,CommentForm
+from .forms import ProfileUpdateForm,CommentForm,PostForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -64,4 +64,18 @@ def new_comment(request,pk):
     else:
         form = CommentForm()
 
-    return render(request, 'insta/comment.html', {'post':post,"form": form})        
+    return render(request, 'insta/comment.html', {'post':post,"form": form})    
+
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        # We pass in the request.FILES argument because we are going to be uploading an Image file and we want to process that in our form.
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.author = current_user
+            post.save()
+        return redirect('post')
+    else:
+        form = PostForm()
+    return render(request, 'insta/create_post.html', {"form": form})        

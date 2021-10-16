@@ -20,7 +20,6 @@ def profile(request):
 
         if p_form.is_valid():
             p_form.save()
-            # messages.success(request,f'your account has been updated')
 
             return redirect('profile')
 

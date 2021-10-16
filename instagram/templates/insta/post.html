@@ -1,4 +1,5 @@
 {%extends 'insta/base.html'%}
+{% load crispy_forms_tags %}
 
 
  {% block content %}
@@ -16,6 +17,7 @@
                      <div class="profile_image">
                         <img  class="rounded-circle" src="{{ user.profile.profile_image.url }}" alt="Add a profile image">
 
+
                      </div>
                      <div class="post_info">
                          <div class="post_name">
@@ -32,7 +34,7 @@
                     <img src="{{ post.image.url}}" class="img-fluid" alt="">
                  </div>
                  <div class="engagement">
-                    <a href=""> <i class="far fa-heart"></i></a>
+                    <a href="{% url 'postlike' post.id %}"> <i class="far fa-heart"></i></a>
                     <a href=""> <i class="far fa-comment"></i> </a>
                     <a href=""> <i class="fas fa-share"></i> </a>
                     <a href=""> <i class="far fa-bookmark float-end"></i> </a>
@@ -48,13 +50,13 @@
 
                         {% if not post.comments.all %}
     
-                        No comments yet... <a href="">add one</a>
+                        No comments yet... <a href="{% url 'comment' post.id %}">add one</a>
                    
                         {% else%}
                  </div>
                  <div class="caption">
 
-                 <a href="">add a comment</a><br>
+                 <a href="{% url 'comment' post.id %}">add a comment</a><br>
                  <h2>Comments...</h2>
                  </div>
 
@@ -81,9 +83,8 @@
              </div>
              </div>
 
-             {% endfor %}
-
-  
+             {% endfor %}  
+             
  </div>
 
  {% endblock %}

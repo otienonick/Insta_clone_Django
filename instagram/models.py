@@ -24,7 +24,7 @@ class Post(models.Model):
 
     @classmethod
     def search_by_location(cls,search_term):
-        photos = cls.objects.filter(location__icontains = search_term)   
+        photos = cls.objects.filter(author__icontains = search_term)   
         # We filter the model data using the __icontains query filter
         return photos    
    
@@ -43,5 +43,5 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
-        return '%s - %s' % (self.post.author, self.name)
+        return '%s - %s' % (self.post.caption, self.name)
             

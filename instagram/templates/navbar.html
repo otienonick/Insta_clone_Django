@@ -22,11 +22,11 @@
 
     </div>
     <div class="search_bar">
-        <form  role="search" action = "">
-        <input type="text" class="text-center"  placeholder="search" name="photos">
-        <button class="search btn" type="submit" href=""> <i class="fas fa-search"></i></button>
-        </form>
-    </div>
+      <form  role="search" action = "{% url 'search_results' %}">
+      <input type="text" class="text-center"  placeholder="search" name="photos">
+      <button class="search btn" type="submit" href=""> <i class="fas fa-search"></i></button>
+      </form>
+  </div>
     <div class="contact_icons">
         <a href="/"><i class="fas fa-home"></i></a>
         <a href="/"><i class="fab fa-facebook-messenger"></i></a>

@@ -81,4 +81,18 @@ def new_post(request):
         return redirect('post')
     else:
         form = PostForm()
-    return render(request, 'insta/create_post.html', {"form": form})        
+    return render(request, 'insta/create_post.html', {"form": form})     
+
+def search_results(request):
+
+    if 'photos' in request.GET and request.GET["photos"]:
+        search_term = request.GET.get("photos")
+        searched_articles = Post.search_by_location(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'insta/search.html',{"message":message,"categories": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'insta/search.html',{"message":message})
+

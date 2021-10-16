@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import  Post,Likes
+from .models import  Post,Likes,Profile
 from django.utils import timezone
 from .forms import ProfileUpdateForm,CommentForm,PostForm
 from django.contrib.auth.decorators import login_required
@@ -15,6 +15,7 @@ def post(request):
 
 def profile(request):
     user = request.user
+
     posts = Post.objects.filter(author=request.user).order_by('-created_date')
 
     if request.method == 'POST':

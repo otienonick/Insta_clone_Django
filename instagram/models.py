@@ -23,8 +23,8 @@ class Post(models.Model):
 
 
     @classmethod
-    def search_by_location(cls,search_term):
-        photos = cls.objects.filter(author__icontains = search_term)   
+    def search_by_name(cls,search_term):
+        photos = cls.objects.filter(author__username__icontains = search_term)   
         # We filter the model data using the __icontains query filter
         return photos    
    

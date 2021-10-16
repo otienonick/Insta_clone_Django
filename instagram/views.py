@@ -87,7 +87,7 @@ def search_results(request):
 
     if 'photos' in request.GET and request.GET["photos"]:
         search_term = request.GET.get("photos")
-        searched_articles = Post.search_by_location(search_term)
+        searched_articles = Post.search_by_name(search_term)
         message = f"{search_term}"
 
         return render(request, 'insta/search.html',{"message":message,"categories": searched_articles})

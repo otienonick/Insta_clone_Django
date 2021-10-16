@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
-from .models import  Post,Likes,Comment
+from .models import  Post,Likes
 from django.utils import timezone
 from .forms import ProfileUpdateForm,CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url = '/accounts/login/')
 def post(request):
     posts = Post.objects.all().filter(created_date__lte = timezone.now()).order_by('-created_date')
 

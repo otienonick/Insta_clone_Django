@@ -14,8 +14,9 @@ def post(request):
     return render(request, 'insta/post.html', {'posts':posts})
 
 def profile(request):
+    user = Profile.objects.get_or_create(user=request.user)
     user = request.user
-
+ 
     posts = Post.objects.filter(author=request.user).order_by('-created_date')
 
     if request.method == 'POST':

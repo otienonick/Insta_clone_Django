@@ -13,8 +13,16 @@
 
         <div class="card">
             <div class="card-body">
-              <strong>@{{user.username}}</strong><br>
-           Bio: <strong>{{user.profile.bio}}</strong>
+              <strong>  <i class="fas fa-user-circle"></i>  {{user.username}}</strong><br>
+              {% if  user.profile.bio%}
+           <p class="fs-6">{{user.profile.bio}}</p>
+           {% else %}
+            <p class="fs-5">
+              No bio 
+            </p> 
+
+
+           {% endif %}
       
             </div>
           </div>
@@ -23,7 +31,15 @@
         <div class="row m-1 mb-3">
             <div class="card">
                 <div class="card-body">
+                  {% if  user.profile.profile_image.url %}
                 <img  class="image-thumbnail img-fluid mt-3" src="{{ user.profile.profile_image.url }}" alt="Add a profile image">
+                {% else %}
+                <img  class="image-thumbnail img-fluid mt-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpPYBhkng2T4O2eNj-0iUMZiUYqP3nPoK3xxltsXP71yT47nFs9dKT5jCGq_gOmrznNkc&usqp=CAU" alt="Add a profile image">
+
+                
+                {% endif %}
+
+
                 </div>
               </div>
              

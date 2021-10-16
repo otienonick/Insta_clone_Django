@@ -9,8 +9,6 @@ urlpatterns = [
     path('<int:post_id>/like',views.like, name = 'postlike'),
     path('comments/<int:pk>' , views.new_comment, name='comment'),
     path('new/' , views.new_post, name='new-post'),
-
-
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

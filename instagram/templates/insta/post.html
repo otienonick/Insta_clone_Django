@@ -15,7 +15,6 @@
              <div class="card">
                  <div class="card-header">
                      <div class="profile_image">
-                        <img  class="rounded-circle" src="{{ user.profile.profile_image.url }}" alt="Add a profile image">
 
 
                      </div>
@@ -65,7 +64,7 @@
                     {% for comment in post.comments.all%}
                     <div class="col-12">
 
-                    <strong>{{user.username}}</strong>:
+                    <strong>{{comment.name}}</strong>:
                     {{comment.body}}
                     <div class="float-end">
                     {{comment.date | timesince}} ago
@@ -84,7 +83,7 @@
              </div>
 
              {% endfor %}  
-             
+
  </div>
 
  {% endblock %}

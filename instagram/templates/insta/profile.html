@@ -1,0 +1,90 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+  <div class="row ">
+    
+  
+ <div class="row">
+    <div class="col-md-6 col-lg-3 col-12 col-sm-12">
+      <div class="row m-1 mb-3">
+
+        <div class="card">
+            <div class="card-body">
+              <strong>@{{user.username}}</strong><br>
+           Bio: <strong>{{user.profile.bio}}</strong>
+      
+            </div>
+          </div>
+         
+      </div>
+        <div class="row m-1 mb-3">
+            <div class="card">
+                <div class="card-body">
+                <img  class="image-thumbnail img-fluid mt-3" src="{{ user.profile.profile_image.url }}" alt="Add a profile image">
+                </div>
+              </div>
+             
+        </div>
+
+</div>
+
+<div class="container float-end">
+  <h3 class="text-center">Update Profile</h3>
+
+  <div class="">
+
+      <div class="card align-items-center">
+          <div class="card-body ">
+              <form   method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+      
+              {{ p_form | crispy  }}
+              <div class="form-group text-center mt-3">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+              </div>
+              
+              </form>
+          </div>
+      </div>
+      </div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="container">
+<div class="text-center">
+  <strong>PHOTOS</strong>
+
+</div>
+
+    
+<div class="row">
+  {% for post in posts %}
+  <div class="col-md-6 col-lg-3 col-12 col-sm-12">
+      <div class="row m-1 mb-3">
+          <div class="card  ">
+            <img  class="image-thumbnail img-fluid mt-3" src="{{ post.image.url }}" alt="Add a profile image">      
+              <div class="card-body">
+            
+              </div>
+            </div>
+      </div>
+  </div>
+  {% endfor%}
+  
+</div>
+
+</div>
+
+</div>
+{% endblock %}

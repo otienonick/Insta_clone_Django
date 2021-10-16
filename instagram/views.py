@@ -22,6 +22,7 @@ def profile(request):
 
         if p_form.is_valid():
             p_form.save()
+            # messages.success(request,f'your account has been updated')
 
             return redirect('profile')
 
@@ -31,7 +32,7 @@ def profile(request):
 
 
 
-    return render(request, 'insta/profile.html', {'p_form':p_form,"posts" : posts,'user' : user})    
+    return render(request, 'insta/profile.html', {'p_form':p_form,"posts" : posts,'user' : user})     
 
 def like(request,post_id):
     user = request.user

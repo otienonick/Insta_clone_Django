@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'instagram',
     'bootstrap5',
     'crispy_forms',
+    'cloudinary'
 
 ]
 

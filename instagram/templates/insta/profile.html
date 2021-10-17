@@ -1,8 +1,9 @@
 {%extends 'insta/base.html'%}
 
-{% block content %}
 {% load crispy_forms_tags %}
 
+
+{% block content %}
 
 <div class="container">
   <div class="row ">
@@ -83,10 +84,16 @@
   <strong>PHOTOS</strong>
 
 </div>
+{% if not posts %}
+ <div class="fs-2 mt-5 text-center">
+  No Photos
+ </div>
+{% else%}
 
-    
+
 <div class="row">
   {% for post in posts %}
+
   <div class="col-md-6 col-lg-3 col-12 col-sm-12">
       <div class="row m-1 mb-3">
           <div class="card  ">
@@ -100,6 +107,7 @@
   {% endfor%}
   
 </div>
+{% endif %}
 
 </div>
 

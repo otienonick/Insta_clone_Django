@@ -30,7 +30,16 @@ class Post(models.Model):
    
 
     def __str__(self):
-        return self.caption        
+        return self.caption   
+
+    def save_image(self):
+        self.save() 
+
+    def delete_image(self):
+        self.delete()    
+
+    def  update_caption(self):
+        self.save()       
         
 class Likes(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE,related_name='user_like')

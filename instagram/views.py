@@ -96,3 +96,27 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'insta/search.html',{"message":message})
 
+def delete_post(request,pk): 
+    post = Post.objects.get(pk = pk)
+    if request.method == 'POST':
+        post.delete()
+
+        return redirect('post')
+
+    return render(request, 'insta/delete_post.html',{})
+
+def update_post(request,pk):
+    post = Post.objects.get(id = pk)
+    form = PostForm(instance = post)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES,instance = post)
+        # We pass in the request.FILES argument because we are going to be uploading an Image file and we want to process that in our form.
+        if form.is_valid():
+            post.save()
+        return redirect('post')
+   
+
+    return render(request, 'insta/update_post.html',{'form' :form})
+
+
+

@@ -215,7 +215,9 @@ outline: none;
     text-transform: uppercase;
 }
 
-
+.float-end{
+    float: right;
+}
   
   @media (max-width:720px) {
     .search_bar {

@@ -92,7 +92,7 @@ def search_results(request):
         searched_articles = Post.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'insta/search.html',{"message":message,"categories": searched_articles})
+        return render(request, 'insta/search.html',{"message":message,"photos": searched_articles})
 
     else:
         message = "You haven't searched for any term"

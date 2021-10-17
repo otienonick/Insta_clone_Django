@@ -48,7 +48,7 @@
                  </div>
                  <div class="caption">
                     <strong><h6>{{post.author}}</h6> </strong> ~ <span>{{post.caption}}</span>
-                    <hr>
+                    <br>
 
                         {% if not post.comments.all %}
     
@@ -58,7 +58,6 @@
                  </div>
                  <div class="caption">
 
-                 <a href="{% url 'comment' post.id %}">add a comment</a><br>
                  <h2>Comments...</h2>
                  </div>
 
@@ -68,7 +67,7 @@
                     <div class="col-12">
 
                     <strong>{{comment.name}}</strong>:
-                    {{comment.body}}
+                    {{comment.comment}}
                     <div class="float-end">
                     {{comment.date | timesince}} ago
                     </div>

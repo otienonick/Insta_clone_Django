@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from .models import  Post,Likes,Profile
+from .models import  Post,Likes,Profile,Comment
 from django.utils import timezone
 from .forms import ProfileUpdateForm,CommentForm,PostForm
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 # Create your views here.
@@ -60,14 +61,15 @@ def new_comment(request,pk):
 
         form = CommentForm(request.POST)
         if form.is_valid():
-            obj = form.save(commit = False)
-            obj.post = post
+            name = request.user.username
+            comment= form.cleaned_data['comment']
+            obj = Comment(post = post,name = name,comment = comment,date = datetime.now())
             obj.save()
         return redirect('post')
     else:
         form = CommentForm()
 
-    return render(request, 'insta/comment.html', {'post':post,"form": form})    
+    return render(request, 'insta/comment.html', {"form": form})    
 
 def new_post(request):
     current_user = request.user
